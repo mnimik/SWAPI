@@ -1,0 +1,36 @@
+{% extends 'swapi/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+    {% csrf_token %}
+<h3 style='text-align: left'>Star Wars Explorer</h3>
+<h4><p style='text-align: left'><a href="{% url 'index' %}"> Collections </a></h4>
+    {% if data %}
+    <form method="GET" action="{% url 'counter' %}">
+    <table class="petl">
+        <thead>
+        <tr>
+        {% for field in fields %}
+            <th><p><input type="checkbox" name="{{ field }}">{{ field }}<Br></th>
+        {% endfor %}
+        </tr>
+        </thead>
+    </table>
+    <p style='text-align: center'><input type="submit" value="Count"></p>
+    </form>
+        {{ data | safe }}
+        {% if need_button %}
+            <form action="{{ action }}" method="POST">
+                {% csrf_token %}
+            <p style='text-align: center'>
+                <button type='submit' class="btn btn-primary"> Load more </button>
+            </form>
+        {% endif %}
+    {% else %}
+       <p style='text-align: center'> No data found
+    {% endif %}
+
+{% endblock %}
