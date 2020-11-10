@@ -1,3 +1,3 @@
 # SWAPI
 
-Start page: http://127.0.0.1:8000/swapi
+Start page on local server: http://127.0.0.1:8000/swapi
