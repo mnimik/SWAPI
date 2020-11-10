@@ -103,11 +103,12 @@ def transform_data(data):
 
 
 def get_csv_list():
+    sw_meta = SwapiMeta.objects.all().order_by('-id')
+    files = os.listdir(CSV_DIR)
     csv_list = list()
-    for _, _, file in os.walk(CSV_DIR):
-        for filename in file:
-            if filename.endswith('.csv'):
-                csv_list.append(filename)
+    for record in sw_meta:
+        if record.csv_name in files:
+            csv_list.append(record)
     return csv_list
 
 

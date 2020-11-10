@@ -19,5 +19,7 @@
             <li><a href="{{ url }}/{{ el }}">{{ el }}</a></li>
         {% endfor %}
         </ul>
+    {% else %}
+        <h4 style='text-align: center'> No data in database </h4>
     {% endif %}
 {% endblock %}
